@@ -17,30 +17,33 @@
 				pb = input.css('padding-bottom'),
 				pl = input.css('padding-left'),
 				ww = input.outerWidth(),
-				//height = input.height(),
+				// height = input.height(),
 				height = input.outerHeight(),
-				eyeMt = (height/2)-10;
-
-			input.css({
+				eyeMt = (height/2)-10,
+				cssRules = {
 				'margin' : '0',
 				'padding' : pt + ' 45px ' + pb + ' ' + pl,
 				'position' : 'static',
 				'width' : '100%',
 				'height' : height,
+				'line-height' : '1.7',
 				'-moz-box-sizing' : 'border-box',
 				'-webkit-box-sizing' : 'border-box',
-				'-ms-box-sizing' : 'border-box'
-			})
+				'-ms-box-sizing' : 'border-box',
+				'box-sizing' : 'border-box'
+			};
+
+			input.css(cssRules);
 
 			eye.css('margin-top', eyeMt+'px');
 
 			try {
 				var textNode = $(self).clone().css("display", "none").attr({"type" : "text", "data-type" : "textPass"});
 			} catch (ex) {
-				var textNode = $('<input type="text" />').data('type', 'textPass').css('display','none');
-				alert(ex);
+				cssRules['display'] = 'none';
+				var textNode = $('<input type="text" />').data('type', 'textPass').css(cssRules);
+				console.log(ex);
 			};
-
 
 			wrapper.css({
 				'margin' : mt +' '+ mr +' '+ mb + ' ' + ml,
